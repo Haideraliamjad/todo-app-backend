@@ -1,0 +1,15 @@
+require('dotenv').config()
+const express = require('express')
+const app = express()
+const { PORT } = require('./config/config')
+const api = require('./routes/api')
+const errorHandler = require('./middlewares/errorHandler')
+const bodyParser = require('body-parser')
+const connection = require('./model/connection')
+connection()
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use('/api', api)
+app.use(errorHandler)
+app.listen(PORT, function () {
+    console.log(`PORT is ruinng at ${PORT}`)
+}); 
