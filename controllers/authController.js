@@ -26,7 +26,7 @@ class authController {
 
     static async logout(req, res, next) {
         try {
-
+            
         } catch (error) {
             return next(error)
         }

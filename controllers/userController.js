@@ -32,8 +32,9 @@ class userController {
             if (ifExist === 0) {
                 return next(new customErrorHandler('email not found', 401))
             }
+            const hashedPassword = await passwordUtility.hash(req.body.password)
             await userModel.updateOne({ email: req.body.email }, {
-                $set: { password: req.body.password }
+                $set: { password: hashedPassword }
             })
             return res.json({
                 status: 'success',
