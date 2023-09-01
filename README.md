@@ -1,3 +1,6 @@
+# Todo App Backend
+Free to use production grade todo app complete backend that you can integrate with any frontend
+
 ## Installation
 
 * Clone this repository
