@@ -8,7 +8,7 @@ class userController {
         try {
             let ifExist = await userModel.findOne({ email: email }).count()
             if (ifExist > 0) {
-                return next(new customErrorHandler('email already taken', 401))
+                return next(new customErrorHandler('email already taken', 200))
             }
             let user = new userModel({
                 name,

@@ -12,4 +12,4 @@ app.use('/api', api)
 app.use(errorHandler)
 app.listen(PORT, function () {
     console.log(`PORT is ruinng at ${PORT}`)
-}); 
+})
