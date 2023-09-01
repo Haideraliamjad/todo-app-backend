@@ -13,4 +13,7 @@ router.post('/user/logout', authController.logout)
 // Auth Routes
 router.get('/todo/get', auth, todoController.get)
 router.post('/todo/add', auth, todoController.add)
+router.post('/todo/update', auth, todoController.update)
+router.get('/todo/delete/:todoId', auth, todoController.delete)
+
 module.exports = router
