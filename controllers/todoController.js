@@ -1,5 +1,6 @@
 const userModel = require('../model/User')
 const customErrorHandler = require('../utils/customErrorHandler')
+const logger = require('../logger/logger')
 class todoController {
     static async get(req, res, next) {
         try {
@@ -64,7 +65,7 @@ class todoController {
                 message: 'todo added successfully'
             })
         } catch (error) {
-            console.log(error)
+            logger.log(error)
             return next(error)
         }
     }
