@@ -5,7 +5,7 @@ const todoController = require('../controllers/todoController')
 const auth = require('../middlewares/auth')
 // User Routes
 router.post('/user/create', userController.create)
-router.post('/user/update', auth, userController.updatePassword)
+router.post('/user/update-password', auth, userController.updatePassword)
 router.post('/user/delete', auth, userController.delete)
 // Auth Routes
 router.post('/user/login', authController.login)

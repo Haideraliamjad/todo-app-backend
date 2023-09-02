@@ -12,5 +12,5 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use('/api', api)
 app.use(errorHandler)
 app.listen(PORT, function () {
-    logger.info(`PORT is ruinng at ${PORT}`)
+    logger.info(`Server is ruinng at port ${PORT}`)
 })

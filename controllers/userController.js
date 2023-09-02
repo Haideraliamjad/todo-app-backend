@@ -8,7 +8,7 @@ class userController {
         try {
             let ifExist = await userModel.findOne({ email: email }).count()
             if (ifExist > 0) {
-                return next(new customErrorHandler('email already taken', 200))
+                return next(new customErrorHandler('email already taken'))
             }
             let user = new userModel({
                 name,
@@ -28,12 +28,12 @@ class userController {
 
     static async updatePassword(req, res, next) {
         try {
-            let ifExist = await userModel.findOne({ email: req.body.email }).count()
+            let ifExist = await userModel.findById(req.userId).count()
             if (ifExist === 0) {
-                return next(new customErrorHandler('email not found', 401))
+                return next(new customErrorHandler('email not found'))
             }
             const hashedPassword = await passwordUtility.hash(req.body.password)
-            await userModel.updateOne({ email: req.body.email }, {
+            await userModel.updateOne({ _id: req.userId }, {
                 $set: { password: hashedPassword }
             })
             return res.json({
@@ -48,11 +48,10 @@ class userController {
 
     static async delete(req, res, next) {
         try {
-            let ifExist = await userModel.findOne({ email: req.body.email }).count()
-            if (ifExist === 0) {
-                return next(new customErrorHandler('account not found', 404))
+            let ifExist = await userModel.findByIdAndDelete(req.userId)
+            if (!ifExist) {
+                return next(new customErrorHandler('account not found'))
             }
-            await userModel.deleteOne({ email: req.body.email })
             return res.json({
                 status: 'success',
                 message: 'account deleted'

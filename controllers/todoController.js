@@ -37,7 +37,7 @@ class todoController {
             const user = await userModel.findById(userId)
             const todoIndex = user.todos.findIndex((todo) => todo._id.toString() === todoId)
             if (todoIndex === -1) {
-                return next(new customErrorHandler('todo not found',404))
+                return next(new customErrorHandler('todo not found'))
             }
             user.todos.splice(todoIndex, 1)
             await user.save()

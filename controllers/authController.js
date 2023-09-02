@@ -8,13 +8,13 @@ class authController {
         try {
             let ifExist = await userModel.findOne({ email: email })
             if (!ifExist) {
-                return next(new customErrorHandler('account not found', 200))
+                return next(new customErrorHandler('account not found'))
             }
             let ifPasswordMatch = await passwordUtility.verify(password, ifExist.password)
             if (!ifPasswordMatch) {
-                return next(new customErrorHandler('email or password is incorret', 200))
+                return next(new customErrorHandler('email or password is incorret'))
             }
-            let accessToken = await tokenUtility.generateToken({ email: ifExist.email, _id: ifExist._id })
+            let accessToken = tokenUtility.generateToken({ email: ifExist.email, _id: ifExist._id })
             return res.json({
                 status: 'success',
                 token: accessToken
@@ -26,7 +26,7 @@ class authController {
 
     static async logout(req, res, next) {
         try {
-            
+
         } catch (error) {
             return next(error)
         }

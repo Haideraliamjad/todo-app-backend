@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken')
-const logger  = require('../logger/logger')
+const logger = require('../logger/logger')
 const { JWT_TOKEN_SECRETE, JWT_TOKEN_EXPIRY } = require('../config/config')
 class tokenUtility {
     static generateToken(payload) {

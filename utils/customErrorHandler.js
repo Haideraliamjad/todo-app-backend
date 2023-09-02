@@ -1,5 +1,5 @@
 class customErrorHandler extends Error {
-    constructor(message, status) {
+    constructor(message, status = 200) {
         super(message)
         this.message = message
         this.status = status
