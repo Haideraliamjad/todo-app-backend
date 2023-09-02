@@ -7,5 +7,7 @@ module.exports = {
     BCRYPT_SALT_ROUNDS: Number(process.env.BCRYPT_SALT_ROUNDS),
     JWT_TOKEN_SECRETE: process.env.JWT_SECRETE,
     JWT_TOKEN_EXPIRY: '2d',
-    NODE_ENV: process.env.NODE_ENV
+    NODE_ENV: process.env.NODE_ENV,
+    ORIGIN_DOMAIN : '*',
+    HTTP_METHODS : ['GET', 'POST']
 }
