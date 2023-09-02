@@ -1,5 +1,6 @@
 const mongoose = require('mongoose')
 const { DB_URL, DB_NAME } = require('../config/config')
+const logger = require('../logger/logger')
 async function connection() {
     try {
         mongoose.set('strictQuery', false);
@@ -8,9 +9,9 @@ async function connection() {
             dbname: DB_NAME,
         };
         await mongoose.connect(DB_ADDRESS, DB_OPTIONS)
-        console.log('connected with database')
+        logger.info('connected with database')
     } catch (error) {
-        console.log('Database connection error', error)
+        logger.error('Database connection error', error)
     }
 }
 module.exports = connection;
