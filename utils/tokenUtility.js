@@ -1,8 +1,7 @@
 const jwt = require('jsonwebtoken')
 const logger = require('../logger/logger')
-const { JWT_TOKEN_SECRETE, JWT_TOKEN_EXPIRY } = require('../config/config')
 class tokenUtility {
-    static generateToken(payload) {
+    static generateToken(payload, JWT_TOKEN_SECRETE, JWT_TOKEN_EXPIRY) {
         try {
             return jwt.sign(payload, JWT_TOKEN_SECRETE, { expiresIn: JWT_TOKEN_EXPIRY })
         } catch (error) {
@@ -10,7 +9,7 @@ class tokenUtility {
         }
     }
 
-    static verfiyToken(token) {
+    static verfiyToken(token, JWT_TOKEN_SECRETE) {
         return jwt.verify(token, JWT_TOKEN_SECRETE)
     }
 }

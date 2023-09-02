@@ -9,7 +9,9 @@ const connection = require('./model/connection')
 const logger = require('./logger/logger')
 const helmet = require('helmet')
 const cors = require('cors')
+const cookieParser = require('cookie-parser');
 connection()
+app.use(cookieParser())
 app.use(helmet())
 app.use(cors({
     origin: ORIGIN_DOMAIN,

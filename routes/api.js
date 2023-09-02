@@ -9,7 +9,7 @@ router.post('/user/update-password', auth, userController.updatePassword)
 router.post('/user/delete', auth, userController.delete)
 // Auth Routes
 router.post('/user/login', authController.login)
-router.post('/user/logout', auth, authController.logout)
+router.post('/user/refresh-token', authController.refreshToken)
 // Todo Routes
 router.get('/todo/get', auth, todoController.get)
 router.post('/todo/add', auth, todoController.add)
