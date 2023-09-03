@@ -17,7 +17,7 @@ app.use(cors({
     origin: ORIGIN_DOMAIN,
     methods: HTTP_METHODS
 }))
-app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.json())
 app.use('/api', api)
 app.use(errorHandler)
 app.listen(PORT, function () {

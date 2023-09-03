@@ -10,6 +10,7 @@ class userController {
             if (ifExist > 0) {
                 return next(new customErrorHandler('email already taken'))
             }
+
             let user = new userModel({
                 name,
                 email,
