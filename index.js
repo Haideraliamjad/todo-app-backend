@@ -1,7 +1,7 @@
 require('dotenv').config()
 const express = require('express')
 const app = express()
-const { PORT, ORIGIN_DOMAIN, HTTP_METHODS } = require('./config/config')
+const { PORT, ORIGIN_DOMAIN, HTTP_METHODS, AUTHORIZATION_CREDIENTIALS_HEADER } = require('./config/config')
 const api = require('./routes/api')
 const errorHandler = require('./middlewares/errorHandler')
 const bodyParser = require('body-parser')
@@ -15,7 +15,8 @@ app.use(cookieParser())
 app.use(helmet())
 app.use(cors({
     origin: ORIGIN_DOMAIN,
-    methods: HTTP_METHODS
+    methods: HTTP_METHODS,
+    credentials: AUTHORIZATION_CREDIENTIALS_HEADER
 }))
 app.use(bodyParser.json())
 app.use('/api', api)
